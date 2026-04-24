@@ -119,11 +119,25 @@ export default function AdminLogin({ onLogin }: { onLogin: (admin: { id: string;
           </form>
         </div>
 
-        <div className="mt-5 rounded-xl border border-slate-800/50 bg-slate-900/30 px-4 py-3">
-          <div className="flex items-start gap-2">
-            <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-600" />
-            <p className="text-[11px] leading-relaxed text-slate-600">
-              This panel is restricted to authorized administrators only. All login attempts are monitored and logged. Unauthorized access attempts will be reported.
+        <div className="space-y-3">
+          <div className="rounded-xl border border-slate-800/50 bg-slate-900/30 px-4 py-3">
+            <div className="flex items-start gap-2">
+              <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-600" />
+              <p className="text-[11px] leading-relaxed text-slate-600">
+                This panel is restricted to authorized administrators only. All login attempts are monitored and logged. Unauthorized access attempts will be reported.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-emerald-500/25 bg-emerald-500/5 px-4 py-3">
+            <p className="text-[11px] font-semibold leading-relaxed text-emerald-300">
+              📌 Default Credentials (First Login):
+              <br />
+              Username: <span className="font-mono text-emerald-200">admin</span>
+              <br />
+              Password: <span className="font-mono text-emerald-200">VulnScan2024!</span>
+              <br />
+              <span className="mt-1 block text-emerald-400">⚠️ Change password immediately after first login!</span>
             </p>
           </div>
         </div>
