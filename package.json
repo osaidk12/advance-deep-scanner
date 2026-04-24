@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
-    "setup-db": "node scripts/setup-db.js"
+    "setup-db": "node scripts/setup-db.js",
+    "setup-admin": "node scripts/setup-admin.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
