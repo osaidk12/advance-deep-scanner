@@ -27,6 +27,9 @@ export function clearStoredAdminToken() {
 
 export async function adminLogin(username: string, password: string): Promise<{ success: boolean; error?: string; session?: AdminSession }> {
   try {
+    console.log('[v0] Starting admin login...');
+    console.log('[v0] Supabase URL:', SUPABASE_URL);
+    
     const response = await fetch(`${SUPABASE_URL}/functions/v1/admin-login?action=login`, {
       method: 'POST',
       headers: {
@@ -36,7 +39,14 @@ export async function adminLogin(username: string, password: string): Promise<{ 
       body: JSON.stringify({ username, password }),
     });
 
+    console.log('[v0] Login response status:', response.status);
     const data = await response.json();
+    console.log('[v0] Login response data:', data);
+
+    if (!response.ok) {
+      console.error('[v0] Login failed with status:', response.status);
+      return { success: false, error: data.error || `Login failed (${response.status})` };
+    }
 
     if (data.success && data.token) {
       setStoredAdminToken(data.token);
@@ -51,8 +61,9 @@ export async function adminLogin(username: string, password: string): Promise<{ 
     }
 
     return { success: false, error: data.error || 'Login failed' };
-  } catch {
-    return { success: false, error: 'Network error. Please try again.' };
+  } catch (err) {
+    console.error('[v0] Admin login error:', err);
+    return { success: false, error: 'Network error. Please check your Supabase setup. See FIX_NETWORK_ERROR.md' };
   }
 }
 
