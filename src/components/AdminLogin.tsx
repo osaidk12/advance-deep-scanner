@@ -23,8 +23,9 @@ export default function AdminLogin({ onLogin }: { onLogin: (admin: { id: string;
       } else {
         setError(result.error || 'Login failed');
       }
-    } catch {
-      setError('An unexpected error occurred');
+    } catch (err) {
+      console.error('[v0] Admin login error:', err);
+      setError('Network error: Check your environment variables and database setup. See DATABASE_SETUP.md for help.');
     } finally {
       setLoading(false);
     }
