@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "setup-db": "node scripts/setup-db.js",
-    "setup-admin": "node scripts/setup-admin.js"
+    "setup-admin": "node scripts/setup-admin.js",
+    "init-db": "node scripts/init-database.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
